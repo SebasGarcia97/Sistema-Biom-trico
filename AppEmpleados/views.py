@@ -34,7 +34,6 @@ def editarEmpleado(request,id):
 	empleado_form= None
 	error = None
 	try:
-		
 		editar = Empleado.objects.get(id = id)
 		if request.method == 'GET':
 			empleado_form= EmpleadoForm(instance = editar)            
@@ -92,8 +91,8 @@ def gen_rec(camera):
 	while True:
 		frame,id = camera.ReconocimientoFacial()
 		yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+		
 def reconocer(request):
-
 	return StreamingHttpResponse(gen_rec(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')
 	
 

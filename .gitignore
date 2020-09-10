@@ -9,3 +9,5 @@ AppEmpleados/migrations
 Data/*
 # .vscode
 .vscode
+# entrenamiento
+modeloFisherFace.xml

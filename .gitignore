@@ -1,0 +1,11 @@
+# _pycaches
+AppUsuario/__pycache__
+AppEmpleados/__pycache__
+SAPP/__pycache__
+# Migrations
+AppUsuario/migrations
+AppEmpleados/migrations
+# Data
+Data/*
+# .vscode
+.vscode

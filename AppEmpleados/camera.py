@@ -22,7 +22,7 @@ class VideoCamera(object):
 	def Entrenar(self):
 		global ban
 		while ban==True:
-			dataPath = 'C:/Users/Sebas garcia/Desktop/SAPP/SAPP/Data' #Cambia a la ruta donde hayas almacenado Data
+			dataPath = './Data' #Cambia a la ruta donde hayas almacenado Data
 			peopleList = os.listdir(dataPath)
 			print('Lista de personas: ', peopleList)
 			labels = []
@@ -49,12 +49,12 @@ class VideoCamera(object):
 			print("Modelo almacenado...")
 			ban=False
 	def ReconocimientoFacial(self):
-		dataPath = 'C:/Users/Sebas garcia/Desktop/SAPP/SAPP/Data'  # Cambia a la ruta donde hayas almacenado Data
+		dataPath = './Data'  # Cambia a la ruta donde hayas almacenado Data
 		imagePaths = os.listdir(dataPath)
 		#print('imagePaths=', imagePaths)
 		face_recognizer = cv2.face.FisherFaceRecognizer_create()
 		# Leyendo el modelo
-		face_recognizer.read('C:/Users/Sebas garcia/Desktop/SAPP/SAPP/modeloFisherFace.xml')
+		face_recognizer.read('./modeloFisherFace.xml')
 		cap = self.video
 		faceClassif = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 		ret, frame = cap.read()
@@ -91,7 +91,7 @@ class VideoCamera(object):
 		# Para crear una carpeta con el nombre de la persona donde se almacenara los rostros
 		id = str(Empleado.objects.count())
 		personName = id
-		dataPath = 'C:/Users/Sebas garcia/Desktop/SAPP/SAPP/Data/' #Cambia a la ruta donde hayas almacenado Data
+		dataPath = './Data' #Cambia a la ruta donde hayas almacenado Data
 		personPath = dataPath + '/' + personName
 		# Crea carpeta
 		if not os.path.exists(personPath):

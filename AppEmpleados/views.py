@@ -89,7 +89,9 @@ def gen_rec(camera):
 			cont = 0
 			ban = False
 	while True:
-		frame,id = camera.ReconocimientoFacial()
+		frame,idv = camera.ReconocimientoFacial()
+		if str(idv)=="":
+			idv=0
 		yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 		
 def reconocer(request):

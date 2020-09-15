@@ -129,11 +129,11 @@
                                                 <div id="p1" class="col-md-6">
                                                     <div id="datos" class="form-group">
                                                         <label class="small mb-6" for="Escriba el  pimer nombre">Nombre</label>
-                                                         <label class="form-control" id="primer_nombreid" type="text" name="primer_nombre" placeholder="Nombre">{% for Empleado in empleados %}
+                                                         <label class="form-control" id="primer_nombreid" type="text" name="primer_nombre" placeholder="Nombre">
                                                             <tr>
                                                                 <td>{{ Empleado.primer_nombre }}</td>                                                                                               
                                                             </tr>
-                                                        {% endfor %} </label>
+                                                         </label>
                                                         </a>
                                                     </div>
                                                 </div> 
@@ -143,32 +143,31 @@
                                             <div id="p2" class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="small mb-6" for="Escriba el primer apellido">Apellido</label>
-                                                    <label class="form-control" type="text" id="primer_apellidoid" name="primer_apellido">{% for Empleado in empleados %}
+                                                    <label class="form-control" type="text" id="primer_apellidoid" name="primer_apellido">
                                                         <tr>
                                                             <td>{{ Empleado.primer_apellido }}</td>                                                                                               
                                                         </tr>
-                                                    {% endfor %} </label>
+                                                    </label>
                                                 </div>
                                             </div>                                                                                             
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="small mb-6" for="Ingrese cedula">Cedula</label>
-                                                    <label class="form-control" type="text" id="cedulaid" name="cedula">{% for Empleado in empleados %}
+                                                    <label class="form-control" type="text" id="cedulaid" name="cedula">
                                                         <tr>
                                                             <td>{{ Empleado.cedula }}</td>                                                                                               
                                                         </tr>
-                                                    {% endfor %} </label>
+                                                    </label>
                                                 </div>
                                             </div> 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="small mb-6" for="Ingrese el cargo">Cargo</label>
-                                                    <label class="form-control" type="text" id="cargoid" name="cargo">{% for Empleado in empleados %}
-                                                        
+                                                    <label class="form-control" type="text" id="cargoid" name="cargo">
                                                         <tr>
                                                             <td>{{ Empleado.cargo }}</td>                                                                                               
                                                         </tr>
-                                                    {% endfor %} </label>
+                                                    </label>
                                                 </div>
                                             </div>  
                                             <div class="col-md-6">

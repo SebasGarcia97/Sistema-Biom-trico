@@ -12,7 +12,6 @@ cont=0
 def sistema(request):
 	global idv
 	empleados = Empleado.objects.filter(id=idv)
-	#id_aux = -1
 	return render(request,'sistema.html',{'empleados':empleados})
 
 def informacion(request):
@@ -70,21 +69,36 @@ def video_feed(request):
 #RECONOCIMIENTO
 def gen_rec(camera):
 	global idv
+	idv = 0
 	cont = 0
-	id_aux = -1
+	id_aux = 0
 	ban = True
+	ban2 = True
 	while ban == True:
 		frame,idv = camera.ReconocimientoFacial()
+		
 		if str(idv)=="":
 			idv=0
+		else:
+			idv = idv+1
+
+		if ban2:
+			id_aux = idv
+			ban2 = False 
+		
 		if idv == id_aux:
 			cont = cont + 1
-			idv = idv + 1
+			print(cont)
+			print(id_aux)
 			yield(b'--frame\r\n'
 				b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-		id_aux = idv 
+		else:
+			cont = 0
+			ban2 = True
+
 		if cont == 20:
-			print("SU ID es :",idv)
+			print("SU ID es :",id_aux)
+			empleados2 = Empleado.objects.filter(id=id_aux)
 			print("LISTO")
 			cont = 0
 		
@@ -97,8 +111,4 @@ def gen_rec(camera):
 		
 def reconocer(request):
 	return StreamingHttpResponse(gen_rec(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')
-
-def actualizar(request):
-	empleados = Empleado.objects.filter(id=idv)
-	return render(request,'sistema.html',{'empleados':empleados})
 	

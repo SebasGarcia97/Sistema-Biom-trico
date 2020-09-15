@@ -164,7 +164,7 @@
                                                 <div class="form-group">
                                                     <label class="small mb-6" for="Ingrese el cargo">Cargo</label>
                                                     <label class="form-control" type="text" id="cargoid" name="cargo">{% for Empleado in empleados %}
-
+                                                        
                                                         <tr>
                                                             <td>{{ Empleado.cargo }}</td>                                                                                               
                                                         </tr>
@@ -181,8 +181,7 @@
                                                 <div class="form-group">
                                                     <label class="small mb-6" for="hora de entrada">Hora de Salida</label>
                                                     <input class="form-control py-4" id="inputLastName" type="text" name="hora_salida" placeholder="Hora de Salida" />
-                                                    
-                                                    <!-- <script> $(function() { $("a.random").click(function() { $(".div1").load(location.href + " .div1"); }); });</script>  -->
+                                                    <script> $(function() { $("a.random").click(function() { $(".div1").load(location.href + " .div1"); }); });</script> 
                                                  </div>
                                             </div>   
                                             
@@ -222,11 +221,11 @@
     function refreshDiv() 
     { //make sure braces are on the same line as the block statement, it's a good convention in JS
         $('#datosid').load(document.URL +  ' #datosid');
-        {{ request.Empleado}}
-        $('#primer_nombreid').html("{{ Empleado.primer_nombre}}");
-        $('#primer_apellidoid').html("{{ Empleado.primer_apellido }}");
-        $('#cedulaid').html("{{ Empleado.cedula }}");
-        $('#cargoid').html("{{ Empleado.cargo }}");
+        {{ request.empleado2}}
+        $('#primer_nombreid').html("{{ empleado2.primer_nombre}}");
+        $('#primer_apellidoid').html("{{ empleado2.primer_apellido }}");
+        $('#cedulaid').html("{{ empleado2.cedula }}");
+        $('#cargoid').html("{{ empleado2.cargo }}");
     }   
     window.setInterval(refreshDiv, 5000); //place reference to refreshDiv (not a string)
 </script>

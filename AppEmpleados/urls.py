@@ -13,5 +13,5 @@ urlpatterns = [
     path('video/', views.Video, name='Video'),   
     path('video_feed/', views.video_feed, name='video_feed'), 
     path('reconocer/', views.reconocer, name='reconocer'), 
-
+    path('actualizar/', views.reconocer, name='actualizar'),
 ]

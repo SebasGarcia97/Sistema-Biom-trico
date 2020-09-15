@@ -87,15 +87,18 @@ def gen_rec(camera):
 			print("SU ID es :",idv)
 			print("LISTO")
 			cont = 0
-			ban = False
-	while True:
-		frame,idv = camera.ReconocimientoFacial()
-		if str(idv)=="":
-			idv=0
-		yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+		
+	#		ban = False
+	#while True:
+	#	frame,idv = camera.ReconocimientoFacial()
+	#	if str(idv)=="":
+	#		idv=0
+	#	yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 		
 def reconocer(request):
 	return StreamingHttpResponse(gen_rec(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')
-	
 
+def actualizar(request):
+	empleados = Empleado.objects.filter(id=idv)
+	return render(request,'sistema.html',{'empleados':empleados})
 	

@@ -124,8 +124,8 @@
                                     <div class="card-header">                                        
                                         TRABAJADOR
                                     </div> 
-                                    <form>
-                                            <div id="datosid" class="row">
+                                    <form id="datosid">
+                                            <div class="row">
                                                 <div id="p1" class="col-md-6">
                                                     <div id="datos" class="form-group">
                                                         <label class="small mb-6" for="Escriba el  pimer nombre">Nombre</label>
@@ -215,14 +215,17 @@
         
     </body>
 </html>
+
 <script> 
-    function refreshDiv() { //make sure braces are on the same line as the block statement, it's a good convention in JS
+    function refreshDiv() 
+    { //make sure braces are on the same line as the block statement, it's a good convention in JS
         $('#datosid').load(document.URL +  ' #datosid');
-        $('#primer_nombreid').html("{% for Empleado in empleados %}{{ Empleado.primernombre }}{% endfor %}");
-        $('#primer_apellidoid').html("{% for Empleado in empleados %}{{ Empleado.primer_apellido }}{% endfor %}");
-        $('#cedulaid').html("{% for Empleado in empleados %}{{ Empleado.cedula }}{% endfor %}");
-        $('#cargoid').html("{% for Empleado in empleados %}{{ Empleado.cargo }}{% endfor %}");
-        }   
+        {{ request.Empleado}}
+        $('#primer_nombreid').html("{{ Empleado.primer_nombre}}");
+        $('#primer_apellidoid').html("{{ Empleado.primer_apellido }}");
+        $('#cedulaid').html("{{ Empleado.cedula }}");
+        $('#cargoid').html("{{ Empleado.cargo }}");
+    }   
     window.setInterval(refreshDiv, 5000); //place reference to refreshDiv (not a string)
 </script>
     

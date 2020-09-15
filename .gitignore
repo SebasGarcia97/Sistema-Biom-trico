@@ -11,3 +11,4 @@ Data/*
 .vscode
 # entrenamiento
 modeloFisherFace.xml
+SAPP/settings.py

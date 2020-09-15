@@ -88,8 +88,8 @@ def gen_rec(camera):
 		
 		if idv == id_aux:
 			cont = cont + 1
-			print(cont)
-			print(id_aux)
+			#print(cont)
+			#print(id_aux)
 			yield(b'--frame\r\n'
 				b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 		else:

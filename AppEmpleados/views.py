@@ -29,27 +29,22 @@ def reg_empleados(request):
 		empleado_form = EmpleadoForm()
 	return render(request,'Empleados/reg_empleados.html',{'empleado_form':empleado_form})
 
+def modificarEmpleado(request,id):
+	editar = Empleado.objects.filter(id = id).first()		  
+	empleado_form= EmpleadoForm(instance = editar) 
+	return render(request,'Empleados/modificar_empleados.html',{'empleado_form':empleado_form, 'editar':editar})
+
 def editarEmpleado(request,id):
-	empleado_form= None
-	error = None
-	try:
-		editar = Empleado.objects.get(id = id)
-		if request.method == 'GET':
-			empleado_form= EmpleadoForm(instance = editar)            
-		else:
-			empleado_form = EmpleadoForm(request.POST, instance = editar)
-			print("empleado_form",empleado_form)   
-			if empleado_form.is_valid():
-				empleado_form.save()
-	except ObjectDoesNotExist as e:
-		error = e        
-	return render(request,'Empleados/reg_empleados.html',{'empleado_form':empleado_form,'error':error})
+	editar = Empleado.objects.get(id = id)		  
+	empleado_form = EmpleadoForm(request.POST, instance = editar) 
+	if empleado_form.is_valid():
+		empleado_form.save()
+	empleados = Empleado.objects.all()
+	return render(request,'Empleados/informacion.html',{'empleados':empleados})
 
 def elim_empleados(request,id):
 	empleado = Empleado.objects.get(id = id)
 	empleado.delete()
-	#empleado.estado = False
-	#empleado.save()
 	return redirect('empleados:Informacion')
 
 #CAMARA
@@ -88,8 +83,6 @@ def gen_rec(camera):
 		
 		if idv == id_aux:
 			cont = cont + 1
-			#print(cont)
-			#print(id_aux)
 			yield(b'--frame\r\n'
 				b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 		else:
@@ -101,13 +94,6 @@ def gen_rec(camera):
 			empleados2 = Empleado.objects.filter(id=id_aux)
 			print("LISTO")
 			cont = 0
-		
-	#		ban = False
-	#while True:
-	#	frame,idv = camera.ReconocimientoFacial()
-	#	if str(idv)=="":
-	#		idv=0
-	#	yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 		
 def reconocer(request):
 	return StreamingHttpResponse(gen_rec(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')

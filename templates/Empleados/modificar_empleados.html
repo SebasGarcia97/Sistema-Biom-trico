@@ -22,63 +22,63 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-2">Ingreso de Datos Empleados</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-2">Modificar Datos de Empleados</h3></div>
                                     <div class="card-body">
-                                        <form  method="POST">                                              
+
+                                        <form method="POST" action="{% url 'empleados:editar_empleado Empleado.id' %}">                                              
                                             {% csrf_token %}                                                                                    
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" >Primer Nombre </label>
-                                                        <input class="form-control py-4" id = "pri_nombre" type="text"   name="primer_nombre" placeholder = "Ingrese el primer nombre" />
+                                                        <label class="small mb-1">Primer Nombre </label>
+                                                        <input class="form-control py-4"  type="text" name="primer_nombre" placeholder="{{empleado_form.primer_nombre}}" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1" >Segundo Nombre </label>
-                                                        <input class="form-control py-4" id = "seg_nombre" type="text" name="segundo_nombre"  placeholder="Ingrese el segundo nombre" />
+                                                        <input class="form-control py-4" id = "seg_nombre" type="text" name="segundo_nombre"   placeholder="{{empleado_form.segundo_nombre}}" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1">Primer Apellido</label>
-                                                        <input class="form-control py-4" id = "pri_apellido"  type="text" name="primer_apellido"  placeholder="Ingrese el primer apellido" />
+                                                        <input class="form-control py-4" id = "pri_apellido"  type="text" name="primer_apellido"   placeholder="{{empleado_form.primer_apellido}}" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1">Segundo Apellido</label>
-                                                        <input class="form-control py-4" id = "seg_apellido" type="text" name="segundo_apellido"  placeholder="Ingrese el segundo apellido" />
+                                                        <input class="form-control py-4" id = "seg_apellido" type="text" name="segundo_apellido"   placeholder="{{empleado_form.segundo_apellido}}" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1">Cédula </label>
-                                                        <input class="form-control py-4" id = "cedula"  type="text" name="cedula"  placeholder="Ingrese la cédula" />
+                                                        <input class="form-control py-4" id = "cedula"  type="text" name="cedula"   placeholder="{{empleado_form.cedula}}" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1">Celular </label>
-                                                        <input class="form-control py-4" id = "celular" type="text" name="celular" placeholder="Ingrese el celular" />
+                                                        <input class="form-control py-4" id = "celular" type="text" name="celular"  placeholder="{{empleado_form.celular}}" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1">Cargo</label>
-                                                        <input class="form-control py-4" id = "cargo"  type="text" name="cargo" placeholder="Ingrese el cargo" />
+                                                        <input class="form-control py-4" id = "cargo"  type="text" name="cargo"  placeholder="{{empleado_form.cargo}}" />
                                                     </div>
                                                 </div><div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1" >Email</label>
-                                                        <input class="form-control py-4" id = "email" type="text" name="email"  placeholder="Ingrese el email" />
+                                                        <input class="form-control py-4" id = "email" type="text" name="email"   placeholder="{{empleado_form.email}}" />
                                                     </div>
                                                 </div>
                                             </div>
                                                 <div class="form-group"></div>  
                                                     <button  class="btn btn-primary btn-block" type="submit">Guardar Datos</button>    
                                                     <a class="btn btn-primary btn-block" href="{% url 'empleados:Sistema' %}">Regresar</a>                    
-                                           
                                         </form>                                       
                                     </div>                                                                       
                                 </div>

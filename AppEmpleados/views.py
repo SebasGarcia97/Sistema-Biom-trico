@@ -19,7 +19,7 @@ def informacion(request):
 	return render(request,'Empleados/informacion.html',{'empleados':empleados})
   
 #BASE DE DATOS
-def reg_empleados(request):
+def reg_empleados(request):	
 	if request.method == "POST":
 		empleado_form = EmpleadoForm(request.POST)
 		if empleado_form.is_valid():
@@ -30,17 +30,18 @@ def reg_empleados(request):
 	return render(request,'Empleados/reg_empleados.html',{'empleado_form':empleado_form})
 
 def modificarEmpleado(request,id):
-	editar = Empleado.objects.filter(id = id).first()		  
-	empleado_form= EmpleadoForm(instance = editar) 
-	return render(request,'Empleados/modificar_empleados.html',{'empleado_form':empleado_form, 'editar':editar})
+	editar = Empleado.objects.get(id = id)	  
+	empleado_form = EmpleadoForm(instance=editar)	
+	return render(request,'Empleados/modificar_empleados.html',{'empleado_form':empleado_form,'editar':editar})
 
 def editarEmpleado(request,id):
-	editar = Empleado.objects.get(id = id)		  
-	empleado_form = EmpleadoForm(request.POST, instance = editar) 
+	editar = Empleado.objects.get(id = id)	  
+	empleado_form = EmpleadoForm(request.POST,instance=editar)	
 	if empleado_form.is_valid():
 		empleado_form.save()
 	empleados = Empleado.objects.all()
-	return render(request,'Empleados/informacion.html',{'empleados':empleados})
+	return render(request,'Empleados/informacion.html',{'empleado_form':empleado_form,'empleados':empleados})
+
 
 def elim_empleados(request,id):
 	empleado = Empleado.objects.get(id = id)

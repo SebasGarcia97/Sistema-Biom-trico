@@ -1,6 +1,7 @@
 from django.db import models
 #python manage.py makemigrations
 # python manage.py migrate
+
 # Create your models here.
 class Empleado(models.Model):
     primer_nombre=models.CharField('Primer Nombre',max_length=20, blank = False, null = False )
@@ -21,13 +22,13 @@ class Empleado(models.Model):
 
 class ControlPersonal(models.Model):
     mar_fecha=models.DateField(auto_now_add=False, blank=True )
-    mar_hora_entrada = models.DateField(auto_now_add=False, auto_now=False, blank=True)
+    mar_hora_entrada = models.TimeField(auto_now_add=False, auto_now=False, blank=True)
     mar_hora_salida= models.TimeField(auto_now_add=False, auto_now=False, blank=True)
     mar_estado=models.BooleanField('Estado',blank = False, null = False)
     mar_id=models.IntegerField('Id',blank = False, null = False,unique = True)
     class Meta:
-        verbose_name='Marcacion'
-        verbose_name_plural='Marcaciones'
+        verbose_name='ControlPersonal'
+        verbose_name_plural='ControlesPersonal'
         ordering = ['mar_fecha']
     def str(self):
         return self.reg_fecha

@@ -221,7 +221,7 @@
     function refreshDiv() 
     { //make sure braces are on the same line as the block statement, it's a good convention in JS
         $('#datosid').load(document.URL +  ' #datosid');
-        {{ request.empleado2}}
+        {{ request.empleado2 }}
         $('#primer_nombreid').html("{{ empleado2.primer_nombre}}");
         $('#primer_apellidoid').html("{{ empleado2.primer_apellido }}");
         $('#cedulaid').html("{{ empleado2.cedula }}");

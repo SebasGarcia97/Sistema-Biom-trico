@@ -47,11 +47,7 @@ def elim_admin(request,id):
     return redirect('usuarios:info_admin')
 	
 #BASE DE DATOS
-def horario(request):
 
-
-
-	return render(request,'Usuario/horario.html')
 
 
 def sistema(request):

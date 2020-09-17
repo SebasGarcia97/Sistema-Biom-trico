@@ -15,4 +15,5 @@ urlpatterns = [
     path('video_feed/', views.video_feed, name='video_feed'), 
     path('reconocer/', views.reconocer, name='reconocer'), 
     path('actualizar/', views.reconocer, name='actualizar'),
+    path('horario/', views.horario, name="Horario" ),
 ]

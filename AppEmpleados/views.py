@@ -98,4 +98,6 @@ def gen_rec(camera):
 		
 def reconocer(request):
 	return StreamingHttpResponse(gen_rec(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')
-	
+
+def horario(request):
+	return render(request,'Empleados/horario.html')

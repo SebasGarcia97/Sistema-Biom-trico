@@ -1,5 +1,5 @@
 from django import forms
-from AppEmpleados.models import Empleado,ControlPersonal
+from AppEmpleados.models import Empleado,Controlpersonal
 
 class EmpleadoForm (forms.ModelForm):
     class Meta:
@@ -8,5 +8,5 @@ class EmpleadoForm (forms.ModelForm):
 
 class ControlPersonalForm (forms.ModelForm):
     class Meta:
-        model = ControlPersonal
+        model = Controlpersonal
         fields = ['mar_fecha','mar_hora_entrada','mar_hora_salida','mar_estado','mar_id']

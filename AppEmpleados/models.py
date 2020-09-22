@@ -8,7 +8,7 @@
 from django.db import models
 
 
-class AppempleadosControlpersonal(models.Model):
+class Controlpersonal(models.Model):
     mar_fecha = models.DateField()
     mar_hora_entrada = models.TimeField()
     mar_hora_salida = models.TimeField()
@@ -17,10 +17,10 @@ class AppempleadosControlpersonal(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'AppEmpleados_controlpersonal'
+        db_table = 'Controlpersonal'
 
 
-class AppempleadosEmpleado(models.Model):
+class Empleado(models.Model):
     primer_nombre = models.CharField(max_length=20)
     segundo_nombre = models.CharField(max_length=20)
     primer_apellido = models.CharField(max_length=20)
@@ -32,7 +32,7 @@ class AppempleadosEmpleado(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'AppEmpleados_empleado'
+        db_table = 'Empleado'
 
 
 class Administradores(models.Model):

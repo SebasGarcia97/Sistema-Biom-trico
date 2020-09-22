@@ -23,9 +23,11 @@ class Conexion:
         # Mapea informaci[on de la base de datos
         metadata = db.MetaData()
         # Crea un objeto con la estructura y las propiedades de la tabla personas
-        self.empleados = db.Table('empleados', metadata, autoload=True, autoload_with=engine)
+        self.empleados = db.Table('Empleado', metadata, autoload=True, autoload_with=engine)
+        # Crea un objeto con la estructura y las propiedades de la tabla personas
+        self.registros = db.Table('Controlpersonal', metadata, autoload=True, autoload_with=engine)
         # Crea un objeto con la estructura y las propiedades de la tabla registro
-        self.registro = db.Table('registro', metadata,autoload=True, autoload_with=engine)
+        self.registro_mar = db.Table('Control_Marcacion', metadata,autoload=True, autoload_with=engine)
         # Crea un objeto con la estructura y las propiedades de la tabla administradores
         self.administradores = db.Table('administradores', metadata, autoload=True, autoload_with=engine)
 
@@ -43,7 +45,7 @@ class Conexion:
 
     # Listar todos los empleados
     def listarEmpleado(self, dataframe=False):
-        query = db.select([self.empleados])
+        query = db.select([self.registro_mar])
         resultado = self.connection.execute(query)
         ResultSet = resultado.fetchall()
         if dataframe:
@@ -128,3 +130,10 @@ class Conexion:
             return None
         else:
             return ResultSet[0]
+
+    def imprimirQuery(self, entrada):
+        print("entrada", entrada)
+
+"""conectarbd = Conexion()
+resultado = conectarbd.listarEmpleado(dataframe=True)
+conectarbd.imprimirQuery(resultado)"""

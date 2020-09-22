@@ -11,4 +11,6 @@ Data/*
 .vscode
 # entrenamiento
 modeloFisherFace.xml
-SAPP/settings.py
+SAPP/settings.
+#carpeta de virtual env
+/SAPP_env

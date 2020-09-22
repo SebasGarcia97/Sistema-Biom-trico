@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'SAPP.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sappbd',
-        'USER': 'postgres',
-        'PASSWORD': 'ismael',
-        'HOST': '127.0.0.1',
-        'DATABASE_PORT':'5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'admin_sapp',
+        'USER': 'admin_sapp',
+        'PASSWORD': 'sappsapp',
+        'HOST': 'techsolutionsec.ga',
+        'DATABASE_PORT':'3306',
     }
 }
 

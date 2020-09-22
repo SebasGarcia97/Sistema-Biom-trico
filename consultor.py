@@ -17,7 +17,7 @@ class Conexion:
     # Conectar la BD
     def conectar(self):
         # Crea la cadena de conexion, para nuestro Script a MySQL
-        engine = db.create_engine("mysql+mysqlconnector://root:140597@localhost:3306/sapp", echo=False)
+        engine = db.create_engine("mysql+mysqlconnector://admin_sapp:sappsapp@techsolutionsec.ga:3306/admin_sapp", echo=False)
         # Conecta a la base de datos
         self.connection = engine.connect()
         # Mapea informaci[on de la base de datos
@@ -128,5 +128,3 @@ class Conexion:
             return None
         else:
             return ResultSet[0]
-
-

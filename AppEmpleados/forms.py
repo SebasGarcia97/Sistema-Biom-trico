@@ -9,4 +9,4 @@ class EmpleadoForm (forms.ModelForm):
 class ControlPersonalForm (forms.ModelForm):
     class Meta:
         model = Controlpersonal
-        fields = ['mar_fecha','mar_hora_entrada','mar_hora_salida','mar_estado','mar_id']
+        fields = ['mar_fecha','mar_hora_entrada','mar_hora_salida','mar_estado','id']

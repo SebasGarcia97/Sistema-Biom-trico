@@ -17,7 +17,6 @@ def sistema(request):
 	empleados = Empleado.objects.filter(id=idv)
 	if idv==0:
 		hora=" "
-	print("hora",hora)
 	return render(request,'sistema.html',{'hora':hora,'empleados':empleados})
 
 def informacion(request):

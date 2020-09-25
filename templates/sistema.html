@@ -174,7 +174,11 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="small mb-6" for="hora de entrada">Hora de Entrada</label>
-                                                    <input class="form-control py-4" id="inputLastName" type="text" name="hora_entrada" placeholder="Hora de Entrada" />
+                                                    <label class="form-control" id="horaentradaid" type="text" name="hora_entrada" placeholder="Hora de Entrada">
+                                                        <tr>
+                                                            <td>{{hora}}</td>                                                                                               
+                                                        </tr>
+                                                    </label> 
                                                 </div>
                                             </div> 
                                             <div class="col-md-6">
@@ -221,11 +225,7 @@
     function refreshDiv() 
     { //make sure braces are on the same line as the block statement, it's a good convention in JS
         $('#datosid').load(document.URL +  ' #datosid');
-        {{ request.empleado2 }}
-        $('#primer_nombreid').html("{{ empleado2.primer_nombre}}");
-        $('#primer_apellidoid').html("{{ empleado2.primer_apellido }}");
-        $('#cedulaid').html("{{ empleado2.cedula }}");
-        $('#cargoid').html("{{ empleado2.cargo }}");
+        {{ request.cargar }}
     }   
     window.setInterval(refreshDiv, 5000); //place reference to refreshDiv (not a string)
 </script>

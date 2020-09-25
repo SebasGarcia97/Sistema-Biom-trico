@@ -4,6 +4,8 @@ from AppEmpleados.models import Empleado
 from AppEmpleados.camera import VideoCamera
 from django.http.response import StreamingHttpResponse
 from django.core.exceptions import ObjectDoesNotExist
+import datetime
+
 global idv
 idv=1
 global cont
@@ -11,8 +13,12 @@ cont=0
 # Create your views here.
 def sistema(request):
 	global idv
+	hora= datetime.datetime.now()
 	empleados = Empleado.objects.filter(id=idv)
-	return render(request,'sistema.html',{'empleados':empleados})
+	if idv==0:
+		hora=" "
+	print("hora",hora)
+	return render(request,'sistema.html',{'hora':hora,'empleados':empleados})
 
 def informacion(request):
 	empleados = Empleado.objects.all()
@@ -92,7 +98,6 @@ def gen_rec(camera):
 
 		if cont == 20:
 			print("SU ID es :",id_aux)
-			empleados2 = Empleado.objects.filter(id=id_aux)
 			print("LISTO")
 			cont = 0
 		

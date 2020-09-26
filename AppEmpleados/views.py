@@ -23,7 +23,6 @@ def informacion(request):
 	empleados = Empleado.objects.all()
 	return render(request,'Empleados/informacion.html',{'empleados':empleados})
   
-#BASE DE DATOS
 def reg_empleados(request):	
 	if request.method == "POST":
 		empleado_form = EmpleadoForm(request.POST)
@@ -47,11 +46,11 @@ def editarEmpleado(request,id):
 	empleados = Empleado.objects.all()
 	return render(request,'Empleados/informacion.html',{'empleado_form':empleado_form,'empleados':empleados})
 
-
 def elim_empleados(request,id):
 	empleado = Empleado.objects.get(id = id)
 	empleado.delete()
 	return redirect('empleados:Informacion')
+
 
 #CAMARA
 def Video(request):
@@ -77,12 +76,10 @@ def gen_rec(camera):
 	ban2 = True
 	while ban == True:
 		frame,idv = camera.ReconocimientoFacial()
-		
 		if str(idv)=="":
 			idv=0
 		else:
 			idv = idv+1
-
 		if ban2:
 			id_aux = idv
 			ban2 = False 
@@ -96,6 +93,7 @@ def gen_rec(camera):
 			ban2 = True
 
 		if cont == 20:
+			
 			print("SU ID es :",id_aux)
 			print("LISTO")
 			cont = 0
@@ -104,4 +102,6 @@ def reconocer(request):
 	return StreamingHttpResponse(gen_rec(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')
 
 def horario(request):
+
 	return render(request,'Empleados/horario.html')
+

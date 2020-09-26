@@ -13,7 +13,7 @@ class Controlpersonal(models.Model):
     mar_hora_entrada = models.TimeField()
     mar_hora_salida = models.TimeField()
     mar_estado = models.IntegerField()
-    #mar_id = models.IntegerField(unique=True)
+    emp_id = models.IntegerField()
     class Meta:
         managed = False
         db_table = 'Controlpersonal'

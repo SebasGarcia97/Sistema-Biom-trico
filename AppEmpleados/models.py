@@ -178,3 +178,17 @@ class Registro(models.Model):
     class Meta:
         managed = False
         db_table = 'registro'
+
+class Marcar(models.Model):
+    emp_id = models.IntegerField(max_length=11)
+    primer_nombre = models.CharField(max_length=100)
+    primer_apellido = models.CharField(max_length=100)
+    segundo_apellido = models.CharField(max_length=100)
+    mar_fecha = models.DateField()
+    mar_hora_entrada = models.TimeField()
+    mar_hora_salida = models.TimeField()
+    mar_estado = models.IntegerField(max_length=1)
+
+    class Meta:
+        managed = False
+        db_table = 'Marcar'

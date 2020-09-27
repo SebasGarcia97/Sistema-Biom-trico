@@ -180,14 +180,14 @@ class Registro(models.Model):
         db_table = 'registro'
 
 class Marcar(models.Model):
-    emp_id = models.IntegerField(max_length=11)
+    emp_id = models.IntegerField()
     primer_nombre = models.CharField(max_length=100)
     primer_apellido = models.CharField(max_length=100)
     segundo_apellido = models.CharField(max_length=100)
     mar_fecha = models.DateField()
     mar_hora_entrada = models.TimeField()
     mar_hora_salida = models.TimeField()
-    mar_estado = models.IntegerField(max_length=1)
+    mar_estado = models.IntegerField()
 
     class Meta:
         managed = False

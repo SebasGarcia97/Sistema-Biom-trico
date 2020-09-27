@@ -17,13 +17,16 @@ cont=0
 # Create your views here.
 def sistema(request):
 	global idv
-	ultimaMarcacion = Marcar.objects.filter(emp_id=idv).last()
-	hora = ultimaMarcacion.mar_hora_entrada
-	hora1 = ultimaMarcacion.mar_hora_salida
-	if not hora1:
-		hora1 = "No registrado"
 	empleados = Empleado.objects.filter(id=idv)
-	if idv==0:
+	if idv!=0:
+		ultimaMarcacion = Marcar.objects.filter(emp_id=idv).last()
+		hora = ultimaMarcacion.mar_hora_entrada
+		hora1 = ultimaMarcacion.mar_hora_salida
+		if not hora1:
+			hora1 = "No registrado"
+		if not hora:
+			hora = "No registrado"
+	else:
 		hora=""
 		hora1=""
 	return render(request,'sistema.html',{'hora':hora,'hora1':hora1,'empleados':empleados})

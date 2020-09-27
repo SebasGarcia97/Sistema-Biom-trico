@@ -1,11 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
-<<<<<<< HEAD
 from AppEmpleados.forms import EmpleadoForm
 from AppEmpleados.models import Empleado, Marcar
-=======
-from AppEmpleados.forms import EmpleadoForm, ControlPersonalForm
-from AppEmpleados.models import Empleado, Controlpersonal
->>>>>>> 46e95be9ff9ed5cd99dc6515f74d78569976bd62
 from AppEmpleados.camera import VideoCamera
 from django.http.response import StreamingHttpResponse
 from django.core.exceptions import ObjectDoesNotExist
@@ -22,15 +17,11 @@ cont=0
 # Create your views here.
 def sistema(request):
 	global idv
-<<<<<<< HEAD
 	ultimaMarcacion = Marcar.objects.filter(emp_id=idv).last()
 	hora = ultimaMarcacion.mar_hora_entrada
 	hora1 = ultimaMarcacion.mar_hora_salida
 	if not hora1:
 		hora1 = "No registrado"
-=======
-	hora= datetime.now()
->>>>>>> 46e95be9ff9ed5cd99dc6515f74d78569976bd62
 	empleados = Empleado.objects.filter(id=idv)
 	if idv==0:
 		hora=""
@@ -112,7 +103,6 @@ def gen_rec(camera):
 			ban2 = True
 
 		if cont == 20:			
-			marcarEntrada()
 			print("SU ID es :",id_aux)
 			print("LISTO")
 			cont = 0
@@ -127,19 +117,3 @@ def reconocer(request):
 def horario(request):
 	marcacion = consultor.horario()
 	return render(request,'Empleados/horario.html',{'marcacion':marcacion})
-
-def marcarEntrada ():
-	hora_entrada_inicial = time(7,0,0,0)
-	hora_entrada_final = time(10,0,0,0)
-	hora_marcacion = time(7,15,0,0) 
-	id_persona = 5
-	#mar_estado = Controlpersonal.objects.get(id = id_persona)
-	#marcacion_entrada = .mar_estado
-	#Controlpersonal.objects.get(id=1).mar_estado
-	if hora_entrada_inicial <= hora_marcacion and hora_entrada_final >= hora_marcacion:
-		Controlpersonal.objects.filter(id=id_persona).update(mar_estado = 1)
-		print("MARCACION ACEPTADA")
-	elif hora_entrada_inicial >= hora_marcacion:
-		print("ESPERE SE HABILITA EL SISTEMA")
-	elif hora_entrada_final < hora_marcacion:
-		print("LLEGA TARDE")

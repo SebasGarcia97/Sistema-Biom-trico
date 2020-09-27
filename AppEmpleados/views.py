@@ -1,10 +1,14 @@
 from django.shortcuts import render,HttpResponse,redirect
 from AppEmpleados.forms import EmpleadoForm
-from AppEmpleados.models import Empleado
+from AppEmpleados.models import Empleado, Marcar
 from AppEmpleados.camera import VideoCamera
 from django.http.response import StreamingHttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 import datetime
+
+from consultor import BaseDatos
+
+consultor = BaseDatos()
 
 global idv
 idv=1
@@ -13,11 +17,16 @@ cont=0
 # Create your views here.
 def sistema(request):
 	global idv
-	hora= datetime.datetime.now()
+	ultimaMarcacion = Marcar.objects.filter(emp_id=idv).last()
+	hora = ultimaMarcacion.mar_hora_entrada
+	hora1 = ultimaMarcacion.mar_hora_salida
+	if not hora1:
+		hora1 = "No registrado"
 	empleados = Empleado.objects.filter(id=idv)
 	if idv==0:
-		hora=" "
-	return render(request,'sistema.html',{'hora':hora,'empleados':empleados})
+		hora=""
+		hora1=""
+	return render(request,'sistema.html',{'hora':hora,'hora1':hora1,'empleados':empleados})
 
 def informacion(request):
 	empleados = Empleado.objects.all()
@@ -69,6 +78,7 @@ def video_feed(request):
 #RECONOCIMIENTO
 def gen_rec(camera):
 	global idv
+	global hora
 	idv = 0
 	cont = 0
 	id_aux = 0
@@ -97,11 +107,15 @@ def gen_rec(camera):
 			print("SU ID es :",id_aux)
 			print("LISTO")
 			cont = 0
+			if id_aux != 0:
+				ret = consultor.marcarSalida(id_aux)
+
+
 		
 def reconocer(request):
 	return StreamingHttpResponse(gen_rec(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')
 
 def horario(request):
-
-	return render(request,'Empleados/horario.html')
+	marcacion = consultor.horario()
+	return render(request,'Empleados/horario.html',{'marcacion':marcacion})
 

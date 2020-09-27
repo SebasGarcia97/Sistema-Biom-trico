@@ -14,7 +14,7 @@ id_persona = 3
 
 if hora_entrada_inicial <= hora_marcacion and hora_entrada_final >= hora_marcacion:
     print("MARCACION ACEPTADA")
-    Controlpersonal.objects.filter(id=id_persona).update(mar_estado = 1)
+    #Controlpersonal.objects.filter(id=id_persona).update(mar_estado = 1)
 
 elif hora_entrada_inicial >= hora_marcacion:
     print("ESPERE SE HABILITA EL SISTEMA")

@@ -140,7 +140,17 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            
+                                            {% for Marcar in marcacion %}
+                                                <tr>
+                                                    <td>{{ Marcar.primer_nombre }}</td>
+                                                  <!--  <td>{{ Empleado.segundo_nombre }}</td>-->
+                                                    <td>{{ Marcar.primer_apellido }}</td>
+                                                    <td>{{ Marcar.mar_fecha }}</td>
+                                                    <td>{{ Marcar.mar_hora_entrada }}</td>
+                                                    <!--<td>{{ Empleado.cedula }}</td>-->
+                                                    <td>{{ Marcar.mar_hora_salida }}</td>                                                                                            
+                                                </tr>
+                                            {% endfor %} 
                                                 
                                         </tbody>
                                     </table>

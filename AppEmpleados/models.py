@@ -192,3 +192,18 @@ class Marcar(models.Model):
     class Meta:
         managed = False
         db_table = 'Marcar'
+
+class Reglas_Marcacion(models.Model):
+    hi1 = models.TimeField()
+    hi2 = models.TimeField()
+    hi3 = models.TimeField()
+    hi4 = models.TimeField()
+    ho1 = models.TimeField()
+    ho2 = models.TimeField()
+    ho3 = models.TimeField()
+    ho4 = models.TimeField()
+
+
+    class Meta:
+        managed = False
+        db_table = 'Reglas_Marcacion'

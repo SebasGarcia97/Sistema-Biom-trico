@@ -86,6 +86,9 @@ DATABASES = {
         'PASSWORD': 'sappsapp',
         'HOST': 'techsolutionsec.ga',
         'DATABASE_PORT':'3306',
+        'OPTIONS': {
+            'connect_timeout': 3600,
+        }
     }
 }
 

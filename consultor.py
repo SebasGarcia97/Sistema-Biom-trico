@@ -1,6 +1,7 @@
 import time
 from datetime import date, datetime
 from AppEmpleados.models import *
+from django.db import close_old_connections
 
 
 class BaseDatos:
@@ -19,7 +20,6 @@ class BaseDatos:
         print(id_in)
         print(date.today())
         print(time.strftime("%H:%M:%S"))
-
         
         if len(comp)==0:
             Controlpersonal.objects.create(emp_id = id_in, mar_fecha = date.today(), mar_hora_entrada = time.strftime("%H:%M:%S"), mar_estado = 0)
@@ -41,3 +41,24 @@ class BaseDatos:
     def horario(self):
         marcaciones = Marcar.objects.all()
         return marcaciones
+
+    def estado_sistema(self):
+        close_old_connections()
+        hora_actual = datetime.now().time()
+        reglas=Reglas_Marcacion.objects.first()
+
+        hi1 = reglas.hi1
+        hi2 = reglas.hi2
+        hi3 = reglas.hi3
+        hi4 = reglas.hi4
+        ho1 = reglas.ho1
+        ho2 = reglas.ho2
+        ho3 = reglas.ho3
+        ho4 = reglas.ho4
+
+        if (hi1 < hora_actual and hi2 > hora_actual) or (hi3 < hora_actual and hi4 > hora_actual):
+            return "Entrada"
+        elif (ho1 < hora_actual and ho2 > hora_actual) or (ho3 < hora_actual and ho4 > hora_actual):
+            return "Salida"
+        else:
+            return "Cerrado"

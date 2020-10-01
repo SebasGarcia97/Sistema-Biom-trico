@@ -117,7 +117,13 @@ def gen_rec(camera):
 			print("LISTO")
 			cont = 0
 			if id_aux != 0:
-				ret = consultor.marcarSalida(id_aux)
+				estado_sistema = consultor.estado_sistema()
+				if estado_sistema == "Entrada":
+					ret = consultor.marcarEntrada(id_aux)
+				elif estado_sistema == "Salida":
+					ret = consultor.marcarSalida(id_aux)
+				else:
+					print("Sistema Cerrado")
 
 
 		

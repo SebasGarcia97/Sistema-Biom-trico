@@ -1,0 +1,11 @@
+id,emp_id,primer_nombre,primer_apellido,segundo_apellido,mar_fecha,mar_hora_entrada,mar_hora_salida,mar_estado
+2,1,Sebastian,Garcia,Reino,2020-09-25,21:20:35,17:01:11,1
+7,1,Sebastian,Garcia,Reino,2020-09-27,17:05:17,17:08:55,1
+3,2,Andrea,Cabrera,Bermeo,2020-09-25,21:21:00,17:01:11,1
+1,3,Santiago,Ochoa,Guaraca,2020-09-22,18:19:41,17:01:11,1
+5,3,Santiago,Ochoa,Guaraca,2020-09-25,22:34:21,17:01:11,1
+6,3,Santiago,Ochoa,Guaraca,2020-09-27,16:55:10,17:01:11,1
+8,3,Santiago,Ochoa,Guaraca,2020-09-27,17:31:48,17:33:19,1
+9,3,Santiago,Ochoa,Guaraca,2020-09-27,17:39:47,17:42:16,1
+10,3,Santiago,Ochoa,Guaraca,2020-09-27,17:46:16,18:01:47,1
+11,3,Santiago,Ochoa,Guaraca,2020-09-27,19:11:44,,0

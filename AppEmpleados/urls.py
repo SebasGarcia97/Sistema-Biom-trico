@@ -16,4 +16,5 @@ urlpatterns = [
     path('reconocer/', views.reconocer, name='reconocer'), 
     path('actualizar/', views.reconocer, name='actualizar'),
     path('horario/', views.horario, name="Horario" ),
+    path('reporte/', views.generar_reporte, name="Reporte" ),
 ]

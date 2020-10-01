@@ -4,8 +4,9 @@ from AppEmpleados.models import Empleado, Marcar
 from AppEmpleados.camera import VideoCamera
 from django.http.response import StreamingHttpResponse
 from django.core.exceptions import ObjectDoesNotExist
-from datetime import time, datetime
-
+import datetime
+import os
+import pandas as pd
 from consultor import BaseDatos
 
 consultor = BaseDatos()
@@ -15,6 +16,12 @@ idv=1
 global cont
 cont=0
 # Create your views here.
+def generar_reporte(request):
+	fecha=datetime.date.today()
+	df = pd.DataFrame(list(Marcar.objects.all().values()))
+	df.reset_index().to_csv(os.path.join('reportes/',str(fecha)+'.csv'))
+	return render(request,'Empleados/reporte.html')
+
 def sistema(request):
 	global idv
 	empleados = Empleado.objects.filter(id=idv)
@@ -118,5 +125,7 @@ def reconocer(request):
 	return StreamingHttpResponse(gen_rec(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')
 
 def horario(request):
+	print("hola2")
 	marcacion = consultor.horario()
 	return render(request,'Empleados/horario.html',{'marcacion':marcacion})
+
